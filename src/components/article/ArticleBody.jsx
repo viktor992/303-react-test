@@ -7,9 +7,12 @@ function ArticleBody(props) {
   };
   const { content } = props;
 
+  // eslint-disable-next-line no-useless-escape
+  const cleanContent = content.replace(/<h3 class=\"heading\">Keep up with everything Wirecutter from your inbox([\s\S]*?)ll be hearing from us soon.<\/p>/g, '');
+
   return (
     <div>
-      <div dangerouslySetInnerHTML={{ __html: content }} />
+      <div dangerouslySetInnerHTML={{ __html: cleanContent }} />
     </div>
   );
 }
