@@ -15,6 +15,7 @@ class Article extends Component {
   render() {
     const { data } = this.props;
     const { clicked } = this.state;
+    const formattedDate = new Date(data.date).toLocaleDateString();
     return (
       <div className="col s12">
         <div className="card">
@@ -25,7 +26,7 @@ class Article extends Component {
                   title={data.title.rendered}
                   // eslint-disable-next-line no-underscore-dangle
                   author={data._links.author[0].href}
-                  date={data.date}
+                  date={formattedDate}
                 />
                 <ArticleBody content={data.content.rendered} />
               </div>
@@ -33,6 +34,7 @@ class Article extends Component {
               <ArticleExcerpt
                 title={data.title.rendered}
                 excerpt={data.excerpt.rendered}
+                date={formattedDate}
                 onClick={() => this.setState(prevState => ({ clicked: !prevState.clicked }))}
               />
             )}

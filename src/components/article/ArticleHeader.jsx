@@ -39,16 +39,16 @@ class ArticleHeader extends Component {
   render() {
     const { data, error, loading } = this.state;
     const { title, date } = this.props;
-    const formattedDate = new Date(date).toLocaleDateString();
+
     return (
       <React.Fragment>
         <div style={{ textAlign: 'center' }}>
           <span className="card-title">{title}</span>
           { loading && <p> Loading... </p>}
           { !loading && !error && (
-            <h6>{`${data.name} - ${formattedDate}`}</h6>
+            <h6>{`${data.name} - ${date}`}</h6>
           ) }
-          { !loading && error && <h6>{`${formattedDate}`}</h6> }
+          { !loading && error && <h6>{`${date}`}</h6> }
         </div>
       </React.Fragment>
     );
